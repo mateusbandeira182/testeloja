@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name', 'Loja Virtual') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <script src="https://kit.fontawesome.com/c63f14c763.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="h-100">
 @include('components.header')
 <main>
     <div class="container">
         @isset($alert)
-            <div class="alert alert-{{ $type }}">
+            <div class="alert alert-{{ $type }} mt-3">
                 {{ $alert }}
             </div>
         @endisset

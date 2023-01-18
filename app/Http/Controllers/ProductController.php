@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductEditRequest;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Repositories\Image\ImageRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
@@ -22,6 +21,10 @@ class ProductController extends Controller
         $alert = session('alert');
         $type = session('type');
         $products = $this->productRepository->all();
+        return view('products.index')
+            ->with('alert', $alert)
+            ->with('type', $type)
+            ->with('products', $products);
     }
 
     public function create()
@@ -31,24 +34,54 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = $this->productRepository->add($request);
-        if($request->hasFile('images'))
-        foreach ($request->file('images') as $image) {
-            $name = bin2hex(random_bytes(4));
-            $path = $image->store('products', $name);
-            $image = $this->imageRepository($path);
+        if($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('products');
+                $this->imageRepository->add($path, $product);
+            }
         }
         return to_route('product.index')
             ->with('alert', "Produto '{$product->name}' foi cadastrado com sucesso")
             ->with('type', 'success');
     }
 
-    public function update(Product $product)
+    public function edit(Product $product)
     {
+        return view('products.edit')->with('product', $product);
+    }
 
+    public function update(ProductEditRequest $request, Product $product)
+    {
+        $result = $this->productRepository->update($request, $product);
+        if($result === 0) {
+            return to_route('product.index')
+                ->with('alert', "Aconteceu algo e o produto '{$product->name}' não pode ser editado")
+                ->with('type', 'danger');
+        } else {
+            return to_route('product.index')
+                ->with('alert', "O produto '{$product->name}' foi atualizado com sucesso")
+                ->with('type', 'success');
+        }
+    }
+
+    public function show(Product $product)
+    {
+        return view('products.show')->with('product', $product);
     }
 
     public function destroy(Product $product)
     {
+        try {
+            $imageResponse = $this->imageRepository->removeAllImages($product);
+            $productResponse = $this->productRepository->remove($product);
+            if($imageResponse && $productResponse === 1) {
+                return to_route('product.index')->with('alert', "Produto '{$product->name}' removido com sucesso")->with('type', 'success');
+            }
+        } catch (\Throwable $exception) {
+            return to_route('product.index')->with('alert', $exception->getMessage())->with('type', 'danger');
+        }
+
+
 
     }
 }

@@ -43012,7 +43012,7 @@ const toJSONObject = (obj) => {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/css/js/app": 0,
+/******/ 			"/assets/js/app": 0,
 /******/ 			"assets/css/styles": 0
 /******/ 		};
 /******/ 		

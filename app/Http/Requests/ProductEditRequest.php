@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class ProductEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,6 @@ class ProductRequest extends FormRequest
             'description' => ['required', 'string', 'min:1', 'max:255'],
             'quantity' => ['required', 'integer', 'min:1'],
             'price' => ['required', 'decimal:2', 'min:0.01'],
-            'images' => ['required', 'max:3'],
-            'images.*' => ['mimes:png,jpg'],
         ];
     }
 
@@ -50,9 +48,6 @@ class ProductRequest extends FormRequest
             'price.required' => 'É necessário atribuir um preço para o produto',
             'price.decimal' => 'É necessário um número decimal',
             'price.min' => 'o preço mínimo é :min',
-            'images.required' => 'Imagens do produto são necessárias',
-            'images.mime' => 'São aceitos apenas imagens no formato JPG e PNG',
-            'images.max' => 'O produto pode conter no máximo 3 imagens',
         ];
     }
 }
