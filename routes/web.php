@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +33,10 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('product.update');
 
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+Route::post('/products/{product}/images', [ImageController::class, 'upload'])->name('product.image.upload');
+
+Route::delete('/products/{product}/images/{image}', [ImageController::class, 'remove'])->name('product.image.remove');
+
+Route::get('/store', [StoreController::class, 'index'])->name('store.index');
 

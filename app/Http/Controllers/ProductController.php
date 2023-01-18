@@ -66,7 +66,12 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show')->with('product', $product);
+        $alert = session('alert');
+        $type = session('type');
+        return view('products.show')
+            ->with('product', $product)
+            ->with('alert', $alert)
+            ->with('type', $type);
     }
 
     public function destroy(Product $product)
@@ -80,8 +85,5 @@ class ProductController extends Controller
         } catch (\Throwable $exception) {
             return to_route('product.index')->with('alert', $exception->getMessage())->with('type', 'danger');
         }
-
-
-
     }
 }

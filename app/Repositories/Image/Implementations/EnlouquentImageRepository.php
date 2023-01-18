@@ -29,7 +29,10 @@ class EnlouquentImageRepository implements ImageRepositoryInterface
 
     public function remove(Image $image)
     {
-        // TODO: Implement remove() method.
+        return DB::transaction(function () use ($image) {
+            Storage::delete($image->image_url);
+            return Image::where('id', $image->id)->delete();
+        });
     }
 
     public function removeAllImages(Product $product)
