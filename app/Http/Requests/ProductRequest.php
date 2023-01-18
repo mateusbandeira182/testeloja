@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'quantity' => ['required', 'integer', 'min:1'],
             'price' => ['required', 'decimal:2', 'min:0.01'],
             'images' => ['required', 'max:3'],
-            'images.*' => ['mimes:png,jpg'],
+            'images.*' => ['mimes:png,jpg,webp'],
         ];
     }
 

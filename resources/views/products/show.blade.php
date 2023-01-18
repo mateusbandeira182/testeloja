@@ -10,11 +10,11 @@
                         @foreach($product->images as $image)
                             @if($flag === 0)
                                 <div class="carousel-item active">
-                                    <img src="{{ asset($image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
+                                    <img src="{{ asset('storeage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
                                 </div>
                             @else
                                 <div class="carousel-item">
-                                    <img src="{{ asset($image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
+                                    <img src="{{ asset('storeage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
                                 </div>
                             @endif
                             @php
