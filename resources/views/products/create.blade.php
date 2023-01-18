@@ -30,6 +30,14 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
+                                    <label for="images" class="form-label">Default file input example</label>
+                                    <input class="form-control" name="images" type="file" id="images" multiple>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
                                     <label for="description" class="form-label">Descrição</label>
                                     <textarea name="description" id="description" style="height: 100px;" class="form-control"></textarea>
                                 </div>

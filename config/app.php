@@ -199,6 +199,7 @@ return [
          * Custom Providers
          */
         App\Providers\ProductRepositoryProvider::class,
+        App\Providers\ImageRepositoryProvider::class,
     ],
 
     /*

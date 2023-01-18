@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_image', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained('products', 'id');
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
             $table->string('image_url');
+            $table->foreignId('product_id')->constrained('products');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_image');
+        Schema::dropIfExists('images');
     }
 };
