@@ -1,66 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Loja Virtual
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+O projeto foi desenvolvido usando PHP 8.2 e o Laravel 9, Bootstrap 5 e JQuery, banco de dados relacional SQLite, devido à infraestrutura já existente previamente na máquina usada para o desenvolvimento.
+Além do PHP instalado na máquina, o projeto precisa do composer instalado. Você pode fazer o download no site do [Composer](https://getcomposer.org/) e realizar a instalação observando os requisitos do seu sistema
 
-## About Laravel
+Para executar o projeto, alguns passos precisam ser executados:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Clonagem desse repositório [Loja Virtual](https://github.com/mateusbandeira182/testeloja.git);
+- Com o repositório clonado, navegue através do terminal até a pasta do projeto;
+- Na pasta do projeto (testeloja) execute o seguinte comando no terminal: `composer install`;
+- O comando irá instalar todas as dependências PHP usadas no projeto;
+- Depois da finalização da instalação das depêndencias do PHP (backend), abra o projeto na sua IDE ou editor de sua preferência;
+- Faça uma cópia do arquivo .env.example e cole no mesmo diretorio onde esta o arquivo original e renomeie o arquivo para .env;
+- No arquivo .env vai estar todos as constantes necessárias para o projeto;
+- Volte ao terminal, na pasta do projeto, e execute o comando `npm install`;
+- Esse comando vai instalar todas as dependências de frontend usadas para a construção do projeto;
+- Com as dependências instaladas, execute no terminal, na pasta do projeto, o comando `npm run dev`;
+- Esse comando vai compilar, para ambiente de desenvolvimento, todo o projeto do frontend;
+- Finalizando a compilação, no terminal execute o comando `php artisan storage:link`;
+- Esse comando vai construir os links para as imagens que serão carregadas para a plataforma;
+- Após a construção dos links, no terminal, execute o comando `php artisan migrate`;
+- Esse comando vai realizar todas as migrações de banco de dados e contruir o mesmo;
+- No terminal irá aparecer uma mensagem falando que o arquivo do banco não existe, e vai pedir para criar, digite yes, que o propio laravel vai criar e estruturar o banco de dados;
+- Depois de realizar as migrações, execute o comando `php artisan serve`, que um servidor PHP será iniciado, geralmente você vai poder acessar pelo dominio (http://localhost:8000/);
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## A Loja Virtual
 
-## Learning Laravel
+A loja tem as seguites funcionalidades:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Cadastro de produtos (nome, quantidade, valor, descrição e 3 (três) imagens);
+- Carrinho (Adição, remoção e edição);
+- Checkout (Verificação e finalização da compra);
+- Pedidos realizados (Todos os pedidos realizados)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+A loja ainda não foi integrado nenhum sistema de pagamento;
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Na barra de menu, existe um itém chamado Produtos, essa listagem seria a visão de quem cadastra os produtos, para acessar o formulário de cadastro de Produtos, entre no menu Produtos e procure o botão Azul (+ Produtos)
 
-## Laravel Sponsors
+## O que foi usando no projeto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- PHP 8.2;
+- Composer;
+- Laravel 9;
+- Bootstrap 5;
+- Fontawesome;
+- SQLite;
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
