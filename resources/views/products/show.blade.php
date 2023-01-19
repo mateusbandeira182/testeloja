@@ -21,7 +21,7 @@
                             @foreach($product->images as $image)
                                 @if($flag === 0)
                                     <div class="carousel-item active">
-                                        <img src="{{ asset('storage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
+                                        <img src="{{ asset('storage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid mx-auto">
                                         <div class="box-buttons d-flex justify-content-center">
                                             <form action="{{ route('product.image.remove', [$product->id, $image->id]) }}" method="post">
                                                 @csrf
@@ -32,7 +32,7 @@
                                     </div>
                                 @else
                                     <div class="carousel-item">
-                                        <img src="{{ asset('storage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid">
+                                        <img src="{{ asset('storage/' . $image->image_url) }}" alt="{{ $product->name }}" class="d-block img-fluid mx-auto">
                                         <div class="box-buttons d-flex justify-content-center">
                                             <form action="{{ route('product.image.remove', [$product->id, $image->id]) }}" method="post">
                                                 @csrf

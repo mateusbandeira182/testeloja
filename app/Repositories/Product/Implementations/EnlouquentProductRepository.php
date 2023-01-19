@@ -55,6 +55,4 @@ class EnlouquentProductRepository implements ProductRepositoryInterface
             return Product::find($product_id);
         });
     }
-
-
 }

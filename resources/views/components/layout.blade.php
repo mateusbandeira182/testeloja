@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <script src="https://kit.fontawesome.com/c63f14c763.js" crossorigin="anonymous"></script>
 </head>
-<body class="h-100">
+<body class="h-100 bg-light">
 @include('components.header')
 <main>
     <div class="container">

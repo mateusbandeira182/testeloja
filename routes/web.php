@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -39,4 +41,18 @@ Route::post('/products/{product}/images', [ImageController::class, 'upload'])->n
 Route::delete('/products/{product}/images/{image}', [ImageController::class, 'remove'])->name('product.image.remove');
 
 Route::get('/store', [StoreController::class, 'index'])->name('store.index');
+
+Route::get('/store/products/{product}', [StoreController::class, 'show'])->name('store.show');
+
+Route::post('/store/product', [StoreController::class, 'store'])->name('store.store');
+
+Route::get('/store/cart', [StoreController::class, 'cart'])->name('store.cart');
+
+Route::put('/store/cart/update', [CartController::class, 'update'])->name('cart.update');
+
+Route::delete('/store/cart/products/{product}/remove', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::post('/store/cart/checkout', [CartController::class, 'store'])->name('cart.store');
+
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 
